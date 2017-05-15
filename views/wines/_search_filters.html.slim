@@ -1,0 +1,58 @@
+#search_filters
+  ul
+    li{ :class => ("cancel" if params[:varietal].present?) }
+      - if params[:varietal].present?
+        = link_to '#' do
+          span #{ WineSearcher.param_to_human(:varietal, params[:varietal]) }
+        = hidden_field_tag :varietal, params[:varietal]
+      - else
+        span Varietal
+        = select_tag :varietal, options_for_select(WineSearcher.filter_options(:varietal, @search)), prompt: 'All'
+    li{ :class => ("cancel" if params[:country].present?) }
+      - if params[:country].present?
+        = link_to '#' do
+          span #{ WineSearcher.param_to_human(:country, params[:country]) }
+        = hidden_field_tag :country, params[:country]
+      - else
+        span Country
+        = select_tag :country, options_for_select(WineSearcher.filter_options(:country, @search)), prompt: 'All'
+    li{ :class => ("cancel" if params[:region].present?) }
+      - if params[:region].present?
+        = link_to '#' do
+          span #{ WineSearcher.param_to_human(:region, params[:region]) }
+        = hidden_field_tag :region, params[:region]
+      - else
+        span Region
+        = select_tag :region, options_for_select(WineSearcher.filter_options(:region, @search)), prompt: 'All'
+    li{ :class => ("cancel" if params[:score].present?) }
+      - if params[:score].present?
+        = link_to '#' do
+          span #{ WineSearcher.param_to_human(:score, params[:score]) }
+        = hidden_field_tag :score, params[:score]
+      - else
+        span Scores
+        = select_tag :score, options_for_select(WineSearcher.filter_options(:score, @search)), prompt: 'All'
+    li{ :class => ("cancel" if params[:price].present?) }
+      - if params[:price].present?
+        = link_to '#' do
+          span #{ WineSearcher.param_to_human(:price, params[:price]) }
+        = hidden_field_tag :price, params[:price]
+      - else
+        span Price
+        = select_tag :price, options_for_select(WineSearcher.filter_options(:price, @search)), prompt: 'All'
+    li{ :class => ("cancel" if params[:bottle_size].present?) }
+      - if params[:bottle_size].present?
+        = link_to '#' do
+          span #{ WineSearcher.param_to_human(:bottle_size, params[:bottle_size]) }
+        = hidden_field_tag :bottle_size, params[:bottle_size]
+      - else
+        span Size
+        = select_tag :bottle_size, options_for_select(WineSearcher.filter_options(:bottle_size, @search)), prompt: 'All'
+    li{ :class => ("cancel" if params[:vintage].present?) }
+      - if params[:vintage].present?
+        = link_to '#' do
+          span #{ WineSearcher.param_to_human(:vintage, params[:vintage]) }
+        = hidden_field_tag :vintage, params[:vintage]
+      - else
+        span Vintage Year
+        = select_tag :vintage, options_for_select(WineSearcher.filter_options(:vintage, @search)), prompt: 'All'
